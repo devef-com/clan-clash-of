@@ -1,5 +1,6 @@
-import { serveFile } from "jsr:@std/http/file-server";
-
-Deno.serve((req: Request) => {
-    return serveFile(req, "./index.html");
+Deno.serve((_) => {
+  const targetUrl = process.env.clan_url;
+  
+  // Defaults to a 302 Temporary Redirect if status is omitted
+  return Response.redirect(targetUrl, 301); 
 });
